@@ -3,14 +3,13 @@ package pl.pw.notes.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import pl.pw.notes.dao.NoteDao;
 import pl.pw.notes.models.Note;
 import pl.pw.notes.service.NoteService;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,14 +31,7 @@ public class NoteController {
 //        return notes;
 //    }
 
-    @GetMapping("/notes")
-    @ResponseBody
-    public List<Note> notes(){
 
-
-
-        return noteService.notes();
-    }
 
 
 
@@ -51,20 +43,61 @@ public class NoteController {
     }
 
     @PostMapping("/saveNote")
-    @ResponseBody
+//    @ResponseBody
     public String seveNote(Note note) {
 
 
         noteService.saveNote(note);
 
-        return "redirect:index";
+        return "redirect:/";
     }
 
-//    @PostMapping("/note")
+    //Lista notatek
+    @GetMapping("/notes")
+    @ResponseBody
+    public List<Note> notes(){
+
+
+
+        return noteService.notes();
+    }
+
+    @GetMapping("/readNote")
+    @ResponseBody
+    public Note readNote(Note note) {
+
+//        noteService.findById(1L);
+
+    return noteService.findById(1L);
+
+    }
+
+//    @GetMapping("/editNote")
 //
 //    public String updateNote(Note note) {
 //
+//        noteService.update(note);
 //
 //        return "addNote";
 //    }
+
+    @RequestMapping("/editNote/{id}")
+
+    public String editNote(@PathVariable Long id, Model model) {
+
+        Note note=noteService.findById(id);
+        model.addAttribute("note",note);
+        noteService.update(note);
+
+        return "editNote";
+    }
+
+    @PostMapping("/editNote/{id}")       // w ten sposob odbieram edytowana clienta z widoku edit.jsp
+
+    public String editedCar(@Valid Note note) {
+
+        noteService.update(note);
+
+        return "redirect:/index";
+    }
 }

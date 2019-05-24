@@ -39,4 +39,5 @@ public class NoteDao {
         return (List<Note>) query.getResultList();
     }
 
+
 }

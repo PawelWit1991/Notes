@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="pl">
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+<h1>Welcome in Note</h1>
+
+
+
+</p>
+
+<form action="#" th:action="@{/editNote/{id}}" th:object="${note}" method="post">
+    <table border="1">
+
+        <tr>
+            <td><label th:text="#{msg.editTitle}" /></td>
+            <td><input type="text" th:field="*{title}" /></td>
+        </tr>
+        <tr>
+            <td><label th:text="#{msg.editContent}" /></td>
+            <td><input type="text" th:field="*{content}" /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+</form>
+</body>
+
+</html>

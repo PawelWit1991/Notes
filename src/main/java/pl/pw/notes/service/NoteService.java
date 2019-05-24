@@ -27,8 +27,18 @@ public class NoteService {
         noteDao.saveNote(note);
     }
 
+    public Note findById(Long id) {
+
+       return noteDao.findById(id);
+    }
+
     public List<Note> notes(){
 
         return noteDao.findAll();
+    }
+
+    public void update(Note note){
+        note.setModiefied(LocalDateTime.now());
+        noteDao.update(note);
     }
 }
