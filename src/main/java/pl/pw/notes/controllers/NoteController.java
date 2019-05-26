@@ -93,11 +93,18 @@ public class NoteController {
     }
 
     @PostMapping("/editNote/{id}")       // w ten sposob odbieram edytowana clienta z widoku edit.jsp
+    @ResponseBody
 
-    public String editedCar(@Valid Note note) {
+    public String editedCar(Note note) {
 
         noteService.update(note);
 
         return "redirect:/index";
+    }
+
+    @RequestMapping("/allNotes")
+    public String allNotes(Model model) {
+        model.addAttribute("notes", noteService.notes());
+        return "allNotes";
     }
 }

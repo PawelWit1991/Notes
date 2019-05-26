@@ -1,1 +1,3 @@
 # Notes
+
+Projekt w budowie..
