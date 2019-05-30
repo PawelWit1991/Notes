@@ -27,7 +27,7 @@ public class NoteService {
         noteDao.saveNote(note);
     }
 
-    public Note findById(Long id) {
+    public Note findById(Integer id) {
 
        return noteDao.findById(id);
     }
@@ -40,5 +40,10 @@ public class NoteService {
     public void update(Note note){
         note.setModiefied(LocalDateTime.now());
         noteDao.update(note);
+    }
+
+    public void delete(Note note){
+
+        noteDao.delete(note);
     }
 }

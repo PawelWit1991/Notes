@@ -11,13 +11,13 @@ public class Note {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    private Integer id;
     String title;
     String content;
     LocalDateTime created;
     LocalDateTime modiefied;
 
-    public Note(Long id, String title, String content) {
+    public Note(Integer id, String title, String content) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -26,11 +26,11 @@ public class Note {
     public Note() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

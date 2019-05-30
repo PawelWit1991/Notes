@@ -3,24 +3,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Good Thymes Virtual Grocery</title>
+    <title>Notes List</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
 <body>
 
-<h1>Product list</h1>
+<h1>Notes List</h1>
 
 <table>
     <tr>
         <th>ID</th>
         <th>TITLE</th>
         <th>CONTENT</th>
+        <th>CREATED</th>
+        <th>MODIEFIED</th>
     </tr>
     <tr th:each="note : ${notes}">
         <td th:text="${note.id}">ID</td>
         <td th:text="${note.title}">TITLE</td>
         <td th:text="${note.content}">CONTENT</td>
+        <td th:text="${note.created}">CREATED</td>
+        <td th:text="${note.modiefied}">CREATED</td>
     </tr>
 </table>
 

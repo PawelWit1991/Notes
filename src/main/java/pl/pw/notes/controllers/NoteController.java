@@ -68,7 +68,7 @@ public class NoteController {
 
 //        noteService.findById(1L);
 
-    return noteService.findById(1L);
+    return noteService.findById(1);
 
     }
 
@@ -81,26 +81,29 @@ public class NoteController {
 //        return "addNote";
 //    }
 
-    @RequestMapping("/editNote/{id}")
+    @GetMapping("/edit/{id}")
 
-    public String editNote(@PathVariable Long id, Model model) {
+    public String editNote(@PathVariable Integer id, Model model) {
+
 
         Note note=noteService.findById(id);
         model.addAttribute("note",note);
+
         noteService.update(note);
 
         return "editNote";
     }
 
-    @PostMapping("/editNote/{id}")       // w ten sposob odbieram edytowana clienta z widoku edit.jsp
-    @ResponseBody
+    @PostMapping("/edit/{id}")       // w ten sposob odbieram edytowana clienta z widoku edit.jsp
+    public String editNote2(@PathVariable Long id, Note note) {
 
-    public String editedCar(Note note) {
+
 
         noteService.update(note);
 
-        return "redirect:/index";
+        return "redirect:/";
     }
+
 
     @RequestMapping("/allNotes")
     public String allNotes(Model model) {

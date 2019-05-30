@@ -22,7 +22,7 @@ public class NoteDao {
     public void saveNote(Note note){
         entityManager.persist(note);
     }
-    public Note findById(long id) {
+    public Note findById(Integer id) {
         return entityManager.find(Note.class, id);
     }
 
