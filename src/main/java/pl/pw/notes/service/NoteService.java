@@ -42,8 +42,9 @@ public class NoteService {
         noteDao.update(note);
     }
 
-    public void delete(Note note){
+    public void delete(Integer id){
 
-        noteDao.delete(note);
+        Note found=findById(id);
+        noteDao.delete(found);
     }
 }

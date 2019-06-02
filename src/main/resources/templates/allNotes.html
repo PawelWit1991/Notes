@@ -25,12 +25,14 @@
         <td th:text="${note.content}">CONTENT</td>
         <td th:text="${note.created}">CREATED</td>
         <td th:text="${note.modiefied}">CREATED</td>
+        <td><a th:href="@{|/delete/${note.id}|}" >Usuń</a></td>
+        <td><a th:href="@{|/edit/${note.id}|}" >Edytuj</a></td>
     </tr>
 </table>
 
 <p>
     <a href="http://localhost:8080/saveNote">Add Note</a>
-    <a href="http://localhost:8080/">MainPage</a></p>
+    <a href="http://localhost:8080/">Main Page</a></p>
 
 </body>
 

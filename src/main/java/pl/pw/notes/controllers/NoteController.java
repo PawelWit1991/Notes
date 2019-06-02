@@ -43,7 +43,6 @@ public class NoteController {
     }
 
     @PostMapping("/saveNote")
-//    @ResponseBody
     public String seveNote(Note note) {
 
 
@@ -56,8 +55,6 @@ public class NoteController {
     @GetMapping("/notes")
     @ResponseBody
     public List<Note> notes(){
-
-
 
         return noteService.notes();
     }
@@ -82,7 +79,6 @@ public class NoteController {
 //    }
 
     @GetMapping("/edit/{id}")
-
     public String editNote(@PathVariable Integer id, Model model) {
 
 
@@ -94,14 +90,14 @@ public class NoteController {
         return "editNote";
     }
 
-    @PostMapping("/edit/{id}")       // w ten sposob odbieram edytowana clienta z widoku edit.jsp
+    @PostMapping("/edit/{id}")
     public String editNote2(@PathVariable Long id, Note note) {
 
 
 
         noteService.update(note);
 
-        return "redirect:/";
+        return "redirect:/allNotes";
     }
 
 
@@ -109,5 +105,14 @@ public class NoteController {
     public String allNotes(Model model) {
         model.addAttribute("notes", noteService.notes());
         return "allNotes";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteNote(@PathVariable Integer id, Note note){
+
+
+        noteService.delete(id);
+
+        return "redirect:/allNotes";
     }
 }
